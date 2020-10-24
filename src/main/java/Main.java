@@ -4,5 +4,6 @@ public class Main {
         System.out.println("Hello Radu");
         System.out.println("Switch to main branch again");
         System.out.println("Add a new line in main");
+        System.out.println("Add again without push");
     }
 }
