@@ -23,9 +23,9 @@ public class ArrayUtils {
         return isPalindrome;
     }
 
-    public static boolean isPalindromen(int[] array) {    // 1 !=
+    public static boolean isPalindromen(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != array[array.length - 1 - i]) {
+            if (array[i] != array[array.length - 1 - i]) { // can be also used : n[i] != n[j]
                 return false;
             }
         }
@@ -41,15 +41,44 @@ public class ArrayUtils {
     // i-3 = 2-> 34
     // i-4 = 7-> 1
 
+    // using collections
     public static List<Integer> inverse(Integer[] myArray) {
         List<Integer> list = Arrays.asList(myArray);
         Collections.reverse(list);
         return list;
     }
 
+    // using an additional array
+    public static void reverseArray(int[] a, int arrLength) {
+        int[] reversedArray = new int[arrLength];
+        int j = arrLength;
+        for (int i = 0; i < arrLength; i++, j--) {
+            reversedArray[j-1] = a[i];
+        }
+
+        System.out.println("Reversed elements are: \n");
+        for (int k = 0; k < arrLength; k++) {
+            System.out.print(reversedArray[k] + " ");
+
+        }
+    }
+
+    //using no additional array
+
+    public static void revArray(int[] n) {
+        for (int i = 0, j = n.length - 1; i <= j ; i++, j--) {
+            int a  = n[i];
+            n[i] = n[j];
+            n[j] = a;
+        }
+        for (int j = 0; j < n.length; j++) {
+           System.out.print(n[j] + " ");
+        }
+    }
+
 
 //    Scrieti un program care sorteaza un array de elemente int (array dat ca parametru)
-//Ex: buuble sort, selection sort, [2, 9, 3, 10] - sortare array => [2,3, 9, 10]
+//Ex: bubble sort, selection sort, [2, 9, 3, 10] - sortare array => [2,3, 9, 10]
 
     public static List<Integer> sort(Integer[] myArray) {
         for (int i = 0; i < myArray.length; i++) {
@@ -133,6 +162,14 @@ public class ArrayUtils {
     public static StringBuffer eliminateCharacter(StringBuffer word, int index) {
         StringBuffer resultString = word.deleteCharAt(index);
         return resultString;
+    }
+
+//    Interschimbrea a 2 numere fara variabila auxiliara
+    public static void interchangeVariables(int a, int b) {
+        a = a + b;
+        b = a - b;
+        a = a - b;
+        System.out.println("After interchanging " + a + " and " + b);
     }
 
 
