@@ -21,9 +21,21 @@ public class StringUtils {
     //TODO: 1. implement using for or frequency array;
     //TODO: 2. implement using only String methods
 
-    public boolean areCircularPermutedStrings(String firstWord, String secondWord) {
+    // using String methods
+    public static boolean areCircularPermutedStrings(String firstWord, String secondWord) {
         // firstWord = "mare";
         // secondWord = "rema";
-        return false;
+        if (firstWord.length() != secondWord.length()) {
+            return false;
+        }
+        for (int i = 0; i < firstWord.length(); i++) {
+            if(!(firstWord.substring(0,1).equals(secondWord.substring(2,3)))){
+                return false;
+            }
+        }
+        return true;
     }
+
+    // using frequency array
+
 }
