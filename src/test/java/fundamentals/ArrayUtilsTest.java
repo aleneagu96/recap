@@ -19,16 +19,27 @@ public class ArrayUtilsTest {
 
         //when
 
-        boolean e1Result = ArrayUtils.isPalindromen(e1);
+        boolean e1Result = ArrayUtils.checkIfArrayIsPalindrome(e1);
 
         //then
 
         Assertions.assertTrue(e1Result);
         // or
-        Assertions.assertTrue(ArrayUtils.isPalindromen(e1));
-        Assertions.assertFalse(ArrayUtils.isPalindromen(e2));
-        Assertions.assertTrue(ArrayUtils.isPalindromen(e3));
+        Assertions.assertTrue(ArrayUtils.checkIfArrayIsPalindrome(e1));
+        Assertions.assertFalse(ArrayUtils.checkIfArrayIsPalindrome(e2));
+        Assertions.assertTrue(ArrayUtils.checkIfArrayIsPalindrome(e3));
 
+    }
+
+    @Test
+    public void findMissingNumberTest() {
+        // given
+        int[] a1 = {1, 2, 4, 5};
+        int maxNumber = 5;
+
+        // when && then
+        Assertions.assertEquals(3, ArrayUtils.findMissingNumber(a1, maxNumber));
+        Assertions.assertEquals(3, ArrayUtils.findMissingNumberUsingMath(a1, maxNumber));
     }
 
     @AfterAll

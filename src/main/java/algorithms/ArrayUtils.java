@@ -6,12 +6,13 @@ import java.util.List;
 
 public class ArrayUtils {
 
-    //    check if array is palindrome
+//    check if array is palindrome
+//    palindrome: int[] n = {1, 2, 5, 5, 2, 1};
+//    i:n[0],n[1],n[2],n[3],n[4],n[5]
+//    j:n[5],n[4],n[3],n[2],n[1],n[0]
+
     public static boolean isPalindrome(int[] arr) {
         boolean isPalindrome = false;
-//       palindrome: int[] n = {1,2,5,5,2,1};
-//       i: n[0], n[1], n[2], n[3], n[4], n[5]
-//       j: n[5], n[4], n[3], n[2], n[1], n[0]
         for (int i = 0, j = arr.length - 1; i <= j; i++, j--) {
             if (arr[i] != arr[j]) {
                 isPalindrome = false;
@@ -23,7 +24,7 @@ public class ArrayUtils {
         return isPalindrome;
     }
 
-    public static boolean isPalindromen(int[] array) {
+    public static boolean checkIfArrayIsPalindrome(int[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] != array[array.length - 1 - i]) { // can be also used : n[i] != n[j]
                 return false;
@@ -53,7 +54,7 @@ public class ArrayUtils {
         int[] reversedArray = new int[arrLength];
         int j = arrLength;
         for (int i = 0; i < arrLength; i++, j--) {
-            reversedArray[j-1] = a[i];
+            reversedArray[j - 1] = a[i];
         }
 
         System.out.println("Reversed elements are: \n");
@@ -66,16 +67,26 @@ public class ArrayUtils {
     //using no additional array
 
     public static void revArray(int[] n) {
-        for (int i = 0, j = n.length - 1; i <= j ; i++, j--) {
-            int a  = n[i];
+        for (int i = 0, j = n.length - 1; i <= j; i++, j--) {
+            int a = n[i];
             n[i] = n[j];
             n[j] = a;
         }
         for (int j = 0; j < n.length; j++) {
-           System.out.print(n[j] + " ");
+            System.out.print(n[j] + " ");
         }
     }
 
+    // return type: array
+
+    public static int[] reversingArray(int[] n) {
+        for (int i = 0, j = n.length - 1; i <= j; i++, j--) {
+            int a = n[i];
+            n[i] = n[j];
+            n[j] = a;
+        }
+        return n;
+    }
 
 //    Scrieti un program care sorteaza un array de elemente int (array dat ca parametru)
 //Ex: bubble sort, selection sort, [2, 9, 3, 10] - sortare array => [2,3, 9, 10]
@@ -120,17 +131,23 @@ public class ArrayUtils {
 //    Scrieti un program care elemina dintr-un array elementele duplicate
 //    Ex: [2, 4, 7, 2, 8, 2] - elimina duplicate => [2,4,7,8]
 
-//    public static List removeDuplicates(Integer[] array) {
-//        List<Integer> arrayList = Arrays.asList(array);
-//        for (int i = 0; i < array.length; i++) {
-//            for (int j = i + 1; j < array.length; j++) {
-//                if (array[i] == array[j]) {
-//                    arrayList.remove(arrayList.indexOf(i)); // UnsupportedOperationException
-//                }
-//            }
-//        }
-//        return arrayList;
-//    }
+    public static void removeDuplicates(int[] array) {
+        int counter = 0;
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array.length - 1; j++) {
+                if (array[i] == array[j]) {
+                    for (int k = j; k < array.length - 1; k++) {
+                        array[k] = array[k + 1];
+                    }
+                    counter++;
+                }
+            }
+        }
+        for (int i = 0; i < array.length - counter; i++) {
+            System.out.print(array[i] + " ");
+        }
+    }
+
 
 //    Scrieti un program care determina numarul de aparitii unei litere date ca parametru
 
@@ -164,7 +181,7 @@ public class ArrayUtils {
         return resultString;
     }
 
-//    Interschimbrea a 2 numere fara variabila auxiliara
+    //    Interschimbrea a 2 numere fara variabila auxiliara
     public static void interchangeVariables(int a, int b) {
         a = a + b;
         b = a - b;
@@ -172,6 +189,40 @@ public class ArrayUtils {
         System.out.println("After interchanging " + a + " and " + b);
     }
 
+
+    // From a list of numbers from 1 to 1000, where a single number is missing, how can you determine which one is
+    // missing while having O(n) complexity
+    // vector de vrecventa
+    //TODO: apply conditions for edge case scenarios( maxNumber = 0- throws exception, there are more than one missing number)
+
+    public static int findMissingNumber(int[] numbers, int maxNumber) {
+        int[] f = new int[maxNumber + 1];
+        for (int j = 0; j < f.length; j++) {  // every elem in f is 0
+            f[j] = 0;
+        }
+        for (int i = 0; i < numbers.length; i++) {
+            f[numbers[i]]++;
+        }
+        for (int k = 1; k < f.length; k++) {
+            if (f[k] == 0) {
+                return k;
+            }
+        }
+        return 0;
+    }
+
+    // fara vector de frecventa
+    // sum  = n(n+1)/2
+    // note that this method works in the context of numbers that go from 1 to n
+
+    public static int findMissingNumberUsingMath(int[] arr, int maxNumber) {
+        int sum = 0;
+        int expectedSum = maxNumber * (maxNumber + 1) / 2;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];  // better choice than sum = sum + arr[i];
+        }
+        return expectedSum - sum;
+    }
 
 }
 
