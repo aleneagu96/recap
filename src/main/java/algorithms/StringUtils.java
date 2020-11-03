@@ -79,8 +79,6 @@ public class StringUtils {
             return false;
         }
         s2 += s2;
-        return s1.contains(s2);
+        return s2.contains(s1);
     }
-
-
 }

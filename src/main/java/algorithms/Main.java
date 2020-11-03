@@ -14,18 +14,18 @@ public class Main {
         String s2 = "rema";
 
 
-
-
         String letterAppearedExerciseString = "aasfeaft";
         String namedLetter = "f";
         String paragraph = "Today we coded for about four hours";
         StringBuffer word = new StringBuffer("String");
 
         int index = 2;
+        int power = 8;
         int length = 6;
         int a = 5;
         int b = 8;
         int maxNumber = 6;
+
 
 
 //  Check if an array is palindrome
@@ -109,28 +109,41 @@ public class Main {
 //  Check if String are circularly permuted
         System.out.println(" ");
         System.out.println("Circularly permuted Strings exercise");
-        boolean isCircularly = StringUtils.isCircularyPermuted(s1,s2);
+        boolean isCircularly = StringUtils.isCircularyPermuted(s1, s2);
         System.out.println(isCircularly);
 
 //  Check if Strings are anagrams
         System.out.println(" ");
         System.out.println("Check if Strings are anagrams exercise");
-        boolean isAnagram = StringUtils.areAnagramStringsUsingOneFrequencyArray(s1,s2);
+        boolean isAnagram = StringUtils.areAnagramStringsUsingOneFrequencyArray(s1, s2);
         System.out.println(isAnagram);
 
 
 //  Check if Strings are anagrams using one frequency vector
         System.out.println(" ");
         System.out.println("Check if Strings are anagrams using one frequency vector");
-        boolean isAnagram2 = StringUtils.areAnagramStringsUsingOneFrequencyArray(s1,s2);
+        boolean isAnagram2 = StringUtils.areAnagramStringsUsingOneFrequencyArray(s1, s2);
         System.out.println(isAnagram2);
 
 
 //  Check if Strings are anagrams using two frequency vectors
         System.out.println(" ");
         System.out.println("Check if Strings are anagrams using two frequency vectors");
-        boolean isAnagram3 = StringUtils.areAnagramsUsingTwoFrequencyArrays(s1,s2);
+        boolean isAnagram3 = StringUtils.areAnagramsUsingTwoFrequencyArrays(s1, s2);
         System.out.println(isAnagram2);
 
-}
+//  Write a recursive function that computes the power of a number
+        System.out.println(" ");
+        System.out.println("Computing the power of a number");
+        int result = RecursionUtils.computePower(index, power);
+        System.out.println(result);
+
+//  Write a recursive function that calculates factorial of a number
+        System.out.println(" ");
+        System.out.println("Factorial ");
+        int result2 = RecursionUtils.factorial(b);
+        System.out.println(result2);
+
+
+    }
 }
