@@ -1,4 +1,4 @@
-package advanced;
+package advanced.collections;
 
 public class LibraryTestRun {
 

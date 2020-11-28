@@ -1,4 +1,4 @@
-package advanced;
+package advanced.collections;
 
 import java.util.*;
 
@@ -39,4 +39,5 @@ public class Library {
     public Library() {
        initWithDefaultBooks();
     }
+
 }
